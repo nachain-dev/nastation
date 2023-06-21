@@ -1,0 +1,10 @@
+.home-view {
+  display: block;
+  text-align: center;
+  padding: 5em;
+}
+
+.logo{
+  width: 200px;
+  height: 200px;
+}

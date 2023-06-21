@@ -1,0 +1,129 @@
+app:
+  project:
+    name: NaStation
+    version: V1.1.0
+    versionNumber: 110
+    websiteUrl: http://localhost:8100
+    whitePaperUrl: https://www.nachain.org/assets/files/Nirvana_Chain_WhitePaper_v2.1.1.pdf
+    appDownloadUrl: https://www.nachain.org/app
+    changeLogUrl: https://www.nachain.org/changelog
+    telegramUrl: https://t.me/nachainglobal
+    twitterUrl: https://twitter.com/nirvana_chain
+
+  api:
+    nascan:
+      url: http://localhost:8200
+    cluster:
+      node:
+        url: http://localhost:4700
+      datacenter:
+        url: http://localhost:8300
+    service:
+      url: https://service.nachain.org
+    trace:
+      url: https://trace.nachain.org
+
+vaadin:
+  productionMode: false
+  compatibilityMode: false
+
+server:
+  address: localhost
+  port: 20902
+  shutdown: graceful
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      suffix: .log
+      prefix: access_log
+      directory: logs
+      pattern: common
+    basedir: logs/server
+
+logging:
+  config: classpath:logback.xml
+  level:
+    org.apache.catalina: "info"
+    org.apache.tomcat: "info"
+    org.springframework: "info"
+    org.hibernate: "info"
+
+springfox:
+  documentation:
+    enabled: false
+
+spring:
+  devtools:
+    add-properties: true
+  livereload:
+    enabled: true
+  lifecycle:
+    timeout-per-shutdown-phase: 40s
+  mustache:
+    check-template-location: false
+  jpa:
+    open-in-view: false
+
+    ## WARN ## MySQL5InnoDBDialect H2Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+        ## WARN ## MySQL5InnoDBDialect H2Dialect
+        dialect : org.hibernate.dialect.MySQL5InnoDBDialect
+  application:
+    name: "nastation"
+
+  h2:
+    console:
+      enabled: true
+      path: /_h2_
+      settings:
+        trace: false
+        web-allow-others: false
+  datasource:
+    ## WARN ## mysql h2
+    platform: mysql
+
+    ## WARN ##
+    #url: jdbc:h2:file:./db_nastation
+    #username: sa
+    #password: sa@nastation
+    #    driverClassName: org.h2.Driver
+    #pool-size: 100
+
+    ## WARN ##
+    url: jdbc:mysql://localhost:3306/db_nastation_v2?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+    username: nastation
+    password: nastation
+    driverClassName: #com.mysql.jdbc.Driver
+    pool-size: 100
+
+  jackson:
+    date-format: MM/dd/yyyy HH:mm:ss
+    serialization:
+      indent_output: true
+      fail_on_empty_beans: true
+    deserialization:
+      fail_on_unknown_properties: false
+    parser:
+      allow_unquoted_control_chars: true
+      allow_single_quotes: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+
+
+
+
+
+
+

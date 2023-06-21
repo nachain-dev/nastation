@@ -1,0 +1,121 @@
+app:
+  project:
+    name: NaStation
+    version: V1.1.0
+    versionNumber: 110
+    websiteUrl: https://www.nachain.org
+    whitePaperUrl: https://www.nachain.org/assets/files/Nirvana_Chain_WhitePaper_v2.1.1.pdf
+    appDownloadUrl: https://www.nachain.org/app
+    changeLogUrl: https://www.nachain.org/changelog
+    telegramUrl: https://t.me/nachainglobal
+    twitterUrl: https://twitter.com/nirvana_chain
+
+  api:
+    nascan:
+      url: https://test-0-scan.test.nachain.org
+    cluster:
+      node:
+        url: https://test-0-node.test.nachain.org
+      datacenter:
+        url: https://test-0-datacenter.test.nachain.org
+    service:
+      url: https://service.nachain.org
+    trace:
+      url: https://trace.nachain.org
+
+vaadin:
+  productionMode: true
+  compatibilityMode: false
+
+server:
+  address: localhost
+  port: 20902
+  shutdown: graceful
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      suffix: .log
+      prefix: access_log
+      directory: logs
+      pattern: common
+    basedir: logs/server
+
+logging:
+  config: classpath:logback.xml
+  level:
+    org.apache.catalina: "info"
+    org.apache.tomcat: "info"
+    org.springframework: "info"
+    org.hibernate: "info"
+
+springfox:
+  documentation:
+    enabled: false
+
+spring:
+  server:
+    servlet:
+      session:
+        timeout: 90d
+  devtools:
+    add-properties: true
+  livereload:
+    enabled: true
+  lifecycle:
+    timeout-per-shutdown-phase: 40s
+  mustache:
+    check-template-location: false
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+        dialect : org.hibernate.dialect.H2Dialect
+  application:
+    name: "nastation"
+  h2:
+    console:
+      enabled: true
+      path: /_h2_
+      settings:
+        trace: false
+        web-allow-others: false
+  datasource:
+    platform: h2
+
+    url: jdbc:h2:file:./db_nastation_test;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE;DATABASE_TO_UPPER=false;AUTO_SERVER=TRUE
+    username: sa
+    password: sa@nastation
+    driverClassName: org.h2.Driver
+    pool-size: 100
+
+  jackson:
+    date-format: MM/dd/yyyy HH:mm:ss
+    serialization:
+      indent_output: true
+      fail_on_empty_beans: true
+    deserialization:
+      fail_on_unknown_properties: false
+    parser:
+      allow_unquoted_control_chars: true
+      allow_single_quotes: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    # dev pro local-h2 devOnline test
+    # productionMode: false
+    active: pro
